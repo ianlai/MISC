@@ -1,5 +1,6 @@
 Situation: 
-In a network with a forward proxy assigned (firewall also maybe), say NET-A, it cannot connect to a NAS which is located in another network, say NET-B, in the Internet. 
+In a network with a forward proxy assigned (firewall also maybe), say NET-A, 
+we cannot connect to a NAS which is located in another network, say NET-B, in the Internet. 
 - The NAS's connect to the Internet through a router which is controllable, so the port forwarding rule is set. 
 - If using a device in NET-B, we can access the NAS with it's LAN-IP. 
 - If using a device neither in NET-B nor in NET-A, we can access the NAS with the WAN-IP (because port forwarding is set, quickconnect is not needed).
