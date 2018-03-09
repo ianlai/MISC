@@ -1,0 +1,48 @@
+Situation: 
+In a network with a forward proxy assigned (firewall also maybe), say NET-A, it cannot connect to a NAS which is located in another network, say NET-B, in the Internet. 
+- The NAS's connect to the Internet through a router which is controllable, so the port forwarding rule is set. 
+- If using a device in NET-B, we can access the NAS with it's LAN-IP. 
+- If using a device neither in NET-B nor in NET-A, we can access the NAS with the WAN-IP (because port forwarding is set, quickconnect is not needed).
+- If using a device in NET-A, we cannot access the NAS. 
+- The symptoms of "cannot access" are as the follows.    
+  * Manager login page is shown correctly. 
+  * After inputing the correct acnt/pwd, it shows loading now but it just hangs. 
+  * When it hangs, if we use Chrome development tool to check the traffic, we can see many request of entry.cgi fails with error code 503. 
+  * It has the same problem even if we set the manager application's router port to be 80. 
+  * The error message of the entry.cgi is captured from Chrome and attached below.  
+
+	[General]
+	Request URL:http://221.252.209.10/webapi/entry.cgi
+	Request Method:POST
+	Status Code:503 Service Unavailable
+	Remote Address:133.199.81.164:8080
+	Referrer Policy:no-referrer-when-downgrade
+
+	[Response Headers]
+	Cache-Control:no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+	Connection:close
+	Content-Length:4702
+	Content-Type:text/html; charset=UTF-8
+	Expires:Thu, 01 Jan 1970 00:00:00 GMT
+	P3P:CP="CAO PSA OUR"
+	Pragma:no-cache
+
+	[Request Headers]
+	Accept:*/*
+	Accept-Encoding:gzip, deflate
+	Accept-Language:ja,en-US;q=0.9,en;q=0.8,zh-TW;q=0.7,zh;q=0.6
+	Content-Length:51
+	Content-Type:application/x-www-form-urlencoded; charset=UTF-8
+	Cookie:stay_login=0; id=I9F4ZCMeoCb061820PDN732400
+	Host:221.252.209.10
+	Origin:http://221.252.209.10
+	Proxy-Connection:keep-alive
+	Referer:http://221.252.209.10/
+	User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+	X-Requested-With:XMLHttpRequest
+	X-SYNO-TOKEN:W9XJeiPAPzemQ
+
+	[Form Data]
+	api:SYNO.Core.Desktop.Initdata
+	method:get
+	version:1
