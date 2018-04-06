@@ -6059,14 +6059,26 @@
 }
 </pre>
 <script type="text/javascript">
+  function toPad(padlen, value, padChar){
+    var padChar = typeof padChar !== 'undefined' ? padChar : '0';
+    var pad = new Array(1 + padlen).join(padChar);
+    return (pad + value).slice(-pad.length);
+  }
+  function toPadTail(padlen, value, padChar){
+    var padChar = typeof padChar !== 'undefined' ? padChar : '0';
+    var padRemainLen = padlen > value.length ? padlen-value.length : 0;
+    var pad = new Array(1 + padRemainLen).join(padChar);
+    return value + pad;
+  }
+
   var pre = document.getElementsByTagName("pre")[0];
   var j = JSON.parse(pre.innerText);
   var output = "";
   for(var i=0; i<j.Arr.length; i++){
     var n=i+1;
-    output += ("[" + n + "] " 
-      + j.Arr[i].frontend_question_id + " --- " 
-      + j.Arr[i].question__title + " --- " 
+    output += ("[" + toPad(3, i, 0) + "] "           + " | " 
+      + toPad(3, j.Arr[i].frontend_question_id, " ") + " | " 
+      + toPadTail(65, j.Arr[i].question__title, " ") + " | " 
       + j.Arr[i].frequency + "\n");
   }
   document.getElementById("data").innerHTML = output;
