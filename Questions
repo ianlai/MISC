@@ -1,0 +1,14 @@
+process
+有一個以上的thread 
+分配記憶體空間 virtual memory address space 
+context switch 
+彼此獨立 不會干擾 要通訊需要IPC 
+(pipe, memory-mapped file, message queue, file, memory share) 
+
+thread
+share 記憶體空間
+分配CPU
+memory因為一樣 所以可以互相存取資料 所以需要鎖
+(mutex, sophomore, signal) 
+
+
